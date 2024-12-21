@@ -1,0 +1,43 @@
+<div class="column gap-1 wrapper">
+    <img [src]="product.image" alt="Product Thumbnail"/>
+    <h2 class="title">{{product.name}}</h2>
+
+    <div class="row gap-05">
+        <span class="price-label">Price:</span>
+        <span class="price">${{ product.price }}</span>
+    </div>
+    <p-confirmDialog>
+        <ng-template pTemplate="message" let-message>
+            <div class="flex flex-column align-items-center w-full gap-3 border-bottom-1 surface-border">
+                <i class="pi pi-exclamation-circle text-6xl text-primary-500"></i>
+                <p>{{ message.message }}</p>
+            </div>
+        </ng-template>
+    </p-confirmDialog>
+    <p-rating
+        [(ngModel)]="product.rating"
+        [readonly]="true"
+        iconCancelClass="hidden"
+        Style="color:black"
+        ></p-rating>
+
+    <div class="row">
+        <button 
+            type="button"
+            pButton
+            icon="pi pi-pencil"
+            (click)="editProduct()"
+            label="Edit"
+            Style="background-color:rgb(51, 102, 153)">
+        </button>
+        <button type="button"
+            pButton
+            icon="pi pi-trash"
+            (click)="confirmDelete()"
+            label="Delete"
+            #deleteButton
+            severity="secondary"
+            style="margin-left:4px; background-color:rbg(47, 72, 88)"></button>
+    </div>
+        
+</div>

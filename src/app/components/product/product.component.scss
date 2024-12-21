@@ -1,0 +1,33 @@
+.wrapper {
+    width: 250px;
+
+    img {
+        aspect-ratio: 1;
+        object-fit: contain;
+        width: 100%;
+        border-radius: 15px;
+        background-color: white;
+    }
+
+    .title {
+        font-weight: 700;
+        font-size: 1.5rem;
+    }
+
+    .price-label {
+        font-weight: 300;
+        font-size: 1rem;
+    }
+
+    .price {
+        font-weight: 500;
+        font-size: 1rem;
+    }
+}
+
+:host ::ng-deep 
+	.p-rating-icon:not(.p-rating-cancel), 
+:host ::ng-deep 
+	.p-rating-icon:not(.p-rating-cancel):hover { 
+	color: rgb(134, 187, 216) !important; 
+}

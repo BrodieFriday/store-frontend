@@ -1,0 +1,45 @@
+
+
+<header class="row myHeader" style="background-color:rgb(56,56,56); height: 75px; padding-top:15px; margin-bottom: 1px">
+    <img src="assets/images/open-soles-footwear-high-resolution-logo-transparent.png" style="margin-left:65px;margin-bottom:5px;">
+    <div style="padding-left:225px">
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText size="60" placeholder="Search"/>
+            </span>
+    </div>
+</header>
+
+<header class="row" style="background-color:rgb(56,56,56); padding-top:15px;padding-bottom:15px;margin-bottom:15px;">
+    <div style="margin-left:40px">
+        <p-dropdown [options]="options" (onChange)="selectItem($event.value)" optionLabel="name"  placeholder="Rating"></p-dropdown>
+    </div>
+</header>
+
+<div class="column gap-1">
+
+    <button type="button" pButton icon="pi pi-plus" (click)="toggleAddPopup()" label="Add Product" class="add-product-btn"></button>
+
+    <div class="row wrap gap-2 space-between">
+        <app-product *ngFor="let product of products" [product]="product" (edit)="toggleEditPopup($event)" (delete)="toggleDeletePopup($event)"></app-product>
+    </div>
+
+    <!---->
+    <p-paginator 
+    (onPageChange)="onPageChange($event)" 
+    [rows]="rows" 
+    [totalRecords]="totalRecords" 
+    [rowsPerPageOptions]="[6, 12, 20]" 
+    #paginator/>
+
+    <app-edit-popup
+    [product]="selectedProduct"
+    [(display)]="displayEditPopup"
+    (confirm)="onConfirmEdit($event)"
+    header="Edit Product"></app-edit-popup>
+
+    <app-edit-popup
+    [(display)]="displayAddPopup"
+    (confirm)="onConfirmAdd($event)"
+    header="Add Product"></app-edit-popup>
+</div>
